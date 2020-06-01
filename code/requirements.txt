@@ -13,12 +13,9 @@ matplotlib==3.1.2
 numpy==1.17.4
 openpyxl==3.0.3
 pandas==0.25.3
-PyAudio==0.2.11
-pygame==1.9.6
 pylab==0.0.2
 pyparsing==2.4.5
 pypng==0.0.20
-PyQRCode==1.2.1
 python-dateutil==2.8.1
 pytz==2019.3
 pyusb==1.0.2
@@ -31,6 +28,4 @@ seaborn==0.9.0
 selenium==3.141.0
 six==1.13.0
 urllib3==1.25.7
-wxpy==0.3.9.8
 xlrd==1.2.0
-you-get==0.4.1423
