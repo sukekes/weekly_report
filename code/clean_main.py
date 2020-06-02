@@ -15,22 +15,25 @@ import zipfile
 import pandas as pd
 
 
-class report():
+class report:
     def __init__(self):
         # self.init_driver()
-        self.path_config = r"D:\Desktop\0501report\test\config.xlsx"
+        # self.path_config = r"D:\Desktop\0501report\test\config.xlsx"
+        self.path_config = r"./config.xlsx"
         list = self.get_config()
 
         self.url = list[0]
         self.name = list[1]
         self.passwd = list[2]
-        self.file_path = list[3]
-        self.download_path = list[4]
-        self.dst_dir = list[5]
-        self.start_time = list[6]
-        self.end_time = list[7]
-        self.uploader = list[8]
-        self.verifier = list[9]
+        # self.file_path = list[3]
+        self.file_path = "./projects.xlsx"
+        self.download_path = list[3]
+        # self.dst_dir = list[5]
+        self.dst_dir = "./dst_dir"
+        self.start_time = list[4]
+        self.end_time = list[5]
+        self.uploader = list[6]
+        self.verifier = list[7]
 
     def get_config(self):
         data = pd.read_excel(self.path_config)
@@ -174,15 +177,19 @@ class report():
     def remove_files(self):
         zip_src = self.download_path
         for filename in os.listdir(zip_src):
-            r = zipfile.is_zipfile(filename)
+            r = zipfile.is_zipfile(zip_src + "\\" + filename)
             if r:
-                os.remove(filename)
+                # os.remove(zip_src + "\\" + filename)
+                # print(filename, "deleted")
+                continue
             else:
                 continue
         for filename in os.listdir(self.dst_dir):
-            r = zipfile.is_zipfile(filename)
+            r = zipfile.is_zipfile(self.dst_dir + "\\" + filename)
+            # print(filename)
             if r:
-                os.remove(filename)
+                os.remove(self.dst_dir + "\\" + filename)
+                print(filename, "deleted")
             else:
                 continue
 
@@ -203,6 +210,7 @@ if __name__ == "__main__":
     # 数据获取
     report.get_data()
     # report.get_increased_issue()
-    # report.remove_files()
+    # 无痕获取
+    report.remove_files()
     # 生成报告
     # report.data_to_excel()

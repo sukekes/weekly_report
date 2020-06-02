@@ -266,6 +266,7 @@ class report():
             r = zipfile.is_zipfile(filename)
             if r:
                 os.remove(filename)
+                print(filename, "deleted")
             else:
                 continue
 
@@ -286,6 +287,6 @@ if __name__ == "__main__":
     # 数据获取
     report.get_data()
      # report.get_increased_issue()
-    # report.remove_files()
+    report.remove_files()
     # 生成报告
      # report.data_to_excel()
