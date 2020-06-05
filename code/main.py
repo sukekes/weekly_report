@@ -39,6 +39,7 @@ class report:
         # self.dst_dir = list[5]
         self.dst_dir = "./dst_dir"
 
+        # 获取当前时间
         self.this_date = time.strftime('%Y.%m.%d', time.localtime(time.time())).replace(".", "")
         if self.status_data == 0:
             self.start_time = list[4]
