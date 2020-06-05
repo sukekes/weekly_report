@@ -17,6 +17,14 @@ import pandas as pd
 
 class report:
     def __init__(self):
+        # {
+        #     status_data:{
+        #         0:"文档",
+        #         1:"每日，默认当天数据",
+        #         2:"每周，默认今天周五"
+        #     }
+        # }
+        self.status_data = 2
         # self.init_driver()
         # self.path_config = r"D:\Desktop\0501report\test\config.xlsx"
         self.path_config = r"./config.xlsx"
@@ -30,8 +38,23 @@ class report:
         self.download_path = list[3]
         # self.dst_dir = list[5]
         self.dst_dir = "./dst_dir"
-        self.start_time = list[4]
-        self.end_time = list[5]
+
+        self.this_date = time.strftime('%Y.%m.%d', time.localtime(time.time())).replace(".", "")
+        if self.status_data == 0:
+            self.start_time = list[4]
+            self.end_time = list[5]
+        elif self.status_data == 1:
+            self.start_time = int(self.this_date)
+            self.end_time = str(self.start_time + 1)
+            self.start_time = str(self.start_time)
+        elif self.status_data == 2:
+            self.start_time = int(self.this_date) - 4
+            self.end_time = str(self.start_time + 5)
+            self.start_time = str(self.start_time)
+        else:
+            print("date error")
+            exit()
+
         self.uploader = list[6]
         self.verifier = list[7]
 
